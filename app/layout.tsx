@@ -24,6 +24,17 @@ export default function RootLayout({
   const theme = getTheme(mode);
   return (
     <html lang='en'>
+      <head>
+        <meta
+          name='description'
+          content='Los Angeles Video Editor'
+        />
+        <meta
+          name='keywords'
+          content='Editor, Videographer, Video Editor, Film Editor'
+        ></meta>
+        <title>David Goehring</title>
+      </head>
       <body className={inter.className}>
         <ThemeContext.Provider value={{ toggleTheme }}>
           <ThemeProvider theme={theme}>
