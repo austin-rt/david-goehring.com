@@ -1,7 +1,9 @@
-import { Box } from '@mui/material/';
+import { NAVIGATION } from '@/lib/constants';
+import { Box, Button } from '@mui/material/';
+import Link from 'next/link';
 
 type Props = {
-  pages: JSX.Element[];
+  pages: string[];
 };
 
 const NavLinks = ({ pages }: Props) => {
@@ -14,7 +16,20 @@ const NavLinks = ({ pages }: Props) => {
         mr: '1rem'
       }}
     >
-      {pages}
+      {pages
+        .map(page => (
+          <Button
+            key={page}
+            component={Link}
+            href={NAVIGATION[page]}
+            sx={{
+              fontSize: { xs: '1.25rem', md: '1.1rem' }
+            }}
+          >
+            {page}
+          </Button>
+        ))
+        .filter(page => page.key !== NAVIGATION.HOME.toUpperCase())}
     </Box>
   );
 };

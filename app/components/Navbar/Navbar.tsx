@@ -5,19 +5,13 @@ import HamburgerMenu from './HamburgerMenu';
 import NavTitle from './NavTitle';
 import NavLinks from './NavLinks';
 import ThemeToggle from './ThemeToggle';
-
-const pages: JSX.Element[] = Object.keys(NAVIGATION)
-  .map(page => (
-    <Link
-      href={NAVIGATION[page]}
-      key={page}
-    >
-      <Button key={page}>{page}</Button>
-    </Link>
-  ))
-  .filter(page => page.key !== NAVIGATION.HOME.toUpperCase());
+import { useDrawer } from '@/app/hooks/useDrawer';
 
 function Navbar() {
+  const { isDrawerOpen, toggleDrawer } = useDrawer();
+
+  const pages: string[] = Object.keys(NAVIGATION);
+
   return (
     <AppBar position='static'>
       <Container>
