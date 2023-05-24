@@ -30,7 +30,7 @@ const NavLinks = ({ pages }: Props) => {
             {page}
           </Button>
         ))
-        .filter(page => page.key !== NAVIGATION.HOME.toUpperCase())}
+        .filter(page => page.key !== 'HOME')}
     </Box>
   );
 };
