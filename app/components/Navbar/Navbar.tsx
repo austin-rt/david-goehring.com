@@ -1,75 +1,35 @@
-import { useState, MouseEvent } from 'react';
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  Container,
-  MenuItem
-} from '@mui/material/';
-import MenuIcon from '@mui/icons-material/Menu';
-import ThemeToggle from '../ThemeToggle';
-import DefaultNavbar from './DefaultNavbar';
+import Link from 'next/link';
+import { AppBar, Toolbar, Container, Button } from '@mui/material/';
+import { NAVIGATION } from '../../../lib/constants';
+import HamburgerMenu from './HamburgerMenu';
+import NavTitle from './NavTitle';
+import NavLinks from './NavLinks';
+import ThemeToggle from './ThemeToggle';
 
-const pages = ['WORK', 'ABOUT', 'CONTACT'];
+const pages: JSX.Element[] = Object.keys(NAVIGATION)
+  .map(page => (
+    <Link
+      href={NAVIGATION[page]}
+      key={page}
+    >
+      <Button key={page}>{page}</Button>
+    </Link>
+  ))
+  .filter(page => page.key !== NAVIGATION.HOME.toUpperCase());
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   return (
     <AppBar position='static'>
-      <Container maxWidth='xl'>
-        <Toolbar disableGutters>
-          <DefaultNavbar />
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size='large'
-              aria-label='hamburger menu'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
-              onClick={handleOpenNavMenu}
-              color='inherit'
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id='menu-appbar'
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left'
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' }
-              }}
-            >
-              {pages.map(page => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
-                  <Typography textAlign='center'>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+      <Container>
+        <Toolbar
+          disableGutters
+          sx={{
+            justifyContent: 'space-between'
+          }}
+        >
+          <HamburgerMenu pages={pages} />
+          <NavTitle />
+          <NavLinks pages={pages} />
           <ThemeToggle />
         </Toolbar>
       </Container>
