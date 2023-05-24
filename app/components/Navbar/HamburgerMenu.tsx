@@ -39,6 +39,7 @@ function HamburgerMenu({ pages }: Props) {
             minWidth: '9rem'
           }}
         >
+          {/* duplicate code. replace with {pages} */}
           {pages.map(page => (
             <Button
               key={page}

@@ -16,6 +16,7 @@ const NavLinks = ({ pages }: Props) => {
         mr: '1rem'
       }}
     >
+      {/* duplicate code. replace with {pages} */}
       {pages
         .map(page => (
           <Button

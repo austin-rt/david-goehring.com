@@ -8,8 +8,7 @@ import ThemeToggle from './ThemeToggle';
 import { useDrawer } from '@/app/hooks/useDrawer';
 
 function Navbar() {
-  const { isDrawerOpen, toggleDrawer } = useDrawer();
-
+  // make pages JSX.Element[] and map through here, adding toggleDrawer
   const pages: string[] = Object.keys(NAVIGATION);
 
   return (
