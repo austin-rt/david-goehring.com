@@ -1,5 +1,5 @@
 export const NAVIGATION: Navigation = {
-  HOME: 'home',
+  HOME: '/',
   WORK: 'work',
   ABOUT: 'about',
   CONTACT: 'contact'
