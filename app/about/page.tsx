@@ -61,7 +61,7 @@ const About = () => {
               variant='h6'
               component='p'
             >
-              Hey there, my name is David Goehring. I'm a Los Angeles based
+              Hey there, my name is David Goehring and I'm a Los Angeles based
               Video Editor.
             </Typography>
             <Typography
