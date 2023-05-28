@@ -69,7 +69,12 @@ const About = () => {
               component='p'
             >
               To see some of my favorite projects from behind the camera, check
-              out vimeo.com/davidgoehring
+              out{' '}
+              <Link href='https://vimeo.com/davidgoehring'>
+                {/* remove inline */}
+                <u>my Vimeo</u>
+              </Link>
+              .
             </Typography>
             <Box>
               <Typography
