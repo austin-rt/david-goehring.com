@@ -6,7 +6,6 @@ import {
   Button,
   Container,
   Grid,
-  IconButton,
   Paper,
   Stack,
   Typography
@@ -70,7 +69,10 @@ const About = () => {
             >
               To see some of my favorite projects from behind the camera, check
               out{' '}
-              <Link href='https://vimeo.com/davidgoehring'>
+              <Link
+                href='https://vimeo.com/davidgoehring'
+                target='_blank'
+              >
                 {/* remove inline */}
                 <u>my Vimeo</u>
               </Link>
