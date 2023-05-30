@@ -22,3 +22,6 @@ export const getTheme = (mode: 'light' | 'dark') =>
       }
     }
   });
+
+// button colors reverse
+// text field floating label color reverse
