@@ -2,10 +2,12 @@ const Page = () => {
   return (
     <div
       style={{
-        display: 'grid'
-        // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        // gridGap: '1rem',
-        // placeItems: 'center'
+        marginTop: '1rem',
+        width: '80vw',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+        gridGap: '1rem',
+        placeItems: 'center'
       }}
     >
       <div style={{ padding: '56.39% 0 0 0', position: 'relative' }}>
