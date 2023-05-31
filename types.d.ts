@@ -8,3 +8,16 @@ type Video = {
   width: number;
   height: number;
 };
+
+type VideoResponse = {
+  total: number;
+  page: number;
+  per_page: number;
+  paging: {
+    next?: string;
+    previous?: string;
+    first: string;
+    last: string;
+  };
+  data: Video[];
+};
