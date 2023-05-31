@@ -14,6 +14,7 @@ const VideoGallery = ({ videos }: Props) => {
         spacing={4}
         sx={{
           marginTop: '2rem',
+          marginBottom: '2rem',
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center'
