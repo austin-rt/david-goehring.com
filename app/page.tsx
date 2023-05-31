@@ -24,7 +24,7 @@ const fetchVideos = () => {
         path: '/me/videos',
         query: params
       },
-      // type these
+      // type these you mfer
       function (error: any, body: any, status_code: any, headers: any) {
         if (error) {
           reject(error);
@@ -37,14 +37,14 @@ const fetchVideos = () => {
 };
 
 const Page = async () => {
-  const videoData = fetchVideos();
+  const videoData: Promise<any> = fetchVideos();
 
-  // type this you mfer
-  const videos: any = await Promise.resolve(videoData);
+  // type this response from vimeo
+  const { data }: any = await Promise.resolve(videoData);
 
   return (
     <>
-      <VideoGallery videos={videos.data} />
+      <VideoGallery videos={data} />
     </>
   );
 };
