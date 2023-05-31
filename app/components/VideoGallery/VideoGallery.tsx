@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Divider, Grid, Stack, Typography } from '@mui/material';
+import { Container, Divider, Stack, Typography } from '@mui/material';
 import ReactPlayer from 'react-player/lazy';
 
 type Props = {

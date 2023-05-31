@@ -1,6 +1,5 @@
 import VideoGallery from './components/VideoGallery/VideoGallery';
-import { CompleteCallback } from 'vimeo';
-import { Vimeo } from 'vimeo';
+import { Vimeo, CompleteCallback } from 'vimeo';
 
 const client = new Vimeo(
   `${process.env.VIMEO_CLIENT_ID}`,
