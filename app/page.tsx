@@ -9,7 +9,7 @@ const client = new Vimeo(
 );
 
 const params = {
-  fields: 'name,link',
+  fields: 'name,player_embed_url,width,height,',
   direction: 'desc',
   sort: 'alphabetical',
   filter_tag: 'portfolio',
