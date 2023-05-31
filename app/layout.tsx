@@ -10,11 +10,6 @@ import Navbar from './components/Navbar/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
-// export const metadata = {
-//   title: 'David Goehring',
-//   description: 'Los Angeles Video Editor'
-// };
-
 export default function RootLayout({
   children
 }: {
