@@ -16,37 +16,32 @@ const params = {
   per_page: 100
 };
 
-const fetchVideos = () => {
+const fetchVideos = (): Promise<any> => {
   return new Promise((resolve, reject) => {
+    const callback: CompleteCallback = function (error, result) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    };
     client.request(
       {
         method: 'GET',
         path: '/me/videos',
         query: params
       },
-      // type these you mfer
-      function (error: any, body: any, status_code: any, headers: any) {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(body);
-        }
-      }
+      callback
     );
   });
 };
 
 const Page = async () => {
-  const videoData: Promise<any> = fetchVideos();
+  const videoData = fetchVideos();
+  console.log(await Promise.resolve(videoData));
+  const { data }: { data: Video[] } = await Promise.resolve(videoData);
 
-  // type this response from vimeo
-  const { data }: any = await Promise.resolve(videoData);
-
-  return (
-    <>
-      <VideoGallery videos={data} />
-    </>
-  );
+  return <VideoGallery videos={data} />;
 };
 
 export default Page;
