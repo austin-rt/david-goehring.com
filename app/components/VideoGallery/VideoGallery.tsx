@@ -20,7 +20,7 @@ const VideoGallery = ({ videos }: Props) => {
         }}
       >
         {videos.map((video: Video) => (
-          <>
+          <div key={video.name}>
             <ReactPlayer
               url={video.player_embed_url}
               controls={true}
@@ -36,7 +36,7 @@ const VideoGallery = ({ videos }: Props) => {
               {video.name.replace(/^\d+/, '')}
             </Typography>
             <Divider />
-          </>
+          </div>
         ))}
       </Stack>
     </Container>
