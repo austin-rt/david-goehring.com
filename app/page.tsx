@@ -15,30 +15,28 @@ const params = {
   per_page: 100
 };
 
-const fetchVideos = (): Promise<any> => {
+const fetchVideos = (): Promise<VideoResponse> => {
   return new Promise((resolve, reject) => {
-    const callback: CompleteCallback = function (error, result) {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(result);
-      }
-    };
     client.request(
       {
         method: 'GET',
         path: '/me/videos',
         query: params
       },
-      callback
+      function (error, result) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      }
     );
   });
 };
 
 const Page = async () => {
   const videoData = fetchVideos();
-  console.log(await Promise.resolve(videoData));
-  const { data }: { data: Video[] } = await Promise.resolve(videoData);
+  const { data } = await Promise.resolve(videoData);
 
   return <VideoGallery videos={data} />;
 };
