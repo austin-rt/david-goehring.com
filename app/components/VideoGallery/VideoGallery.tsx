@@ -1,36 +1,44 @@
 'use client';
 
-import { Container, Grid } from '@mui/material';
+import { Container, Divider, Grid, Stack, Typography } from '@mui/material';
+import ReactPlayer from 'react-player/lazy';
 
-// type this you mfer
 type Props = {
-  videos: any;
+  videos: Video[];
 };
 
 const VideoGallery = ({ videos }: Props) => {
   return (
-    <Container
-      maxWidth='md'
-      // sx={{ border: '2px solid green' }}
-    >
-      <Grid
-        container
-        spacing={2}
-        justifyContent='space-evenly'
-        // sx={{ border: '1px solid red' }}
+    <Container maxWidth='xl'>
+      <Stack
+        spacing={4}
+        sx={{
+          marginTop: '2rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}
       >
-        {videos.map((video: any) => (
-          <Grid
-            item
-            key={video.name}
-            p={2}
-            // sx={{ border: '1px solid blue' }}
-          >
-            <h2>{video.name}</h2>
-            <p>{video.link}</p>
-          </Grid>
+        {videos.map((video: Video) => (
+          <>
+            <ReactPlayer
+              url={video.player_embed_url}
+              controls={true}
+              pip={true}
+              stopOnUnmount={false}
+              width='100%'
+            />
+            <Typography
+              variant='h5'
+              component={'h3'}
+              textAlign={'center'}
+            >
+              {video.name.replace(/^\d+/, '')}
+            </Typography>
+            <Divider />
+          </>
         ))}
-      </Grid>
+      </Stack>
     </Container>
   );
 };
