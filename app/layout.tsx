@@ -1,43 +1,30 @@
-'use client';
-import './globals.css';
-import { ThemeProvider } from '@mui/material/styles';
-import { ThemeContext } from './contexts/themeContext';
-import { useThemeToggle } from './hooks/useThemeToggle';
-import { getTheme } from './theme';
-import CssBaseline from '@mui/material/CssBaseline';
-import { Inter } from 'next/font/google';
-import Navbar from './components/Navbar/Navbar';
+import { Inter } from "next/font/google";
+import Navbar from "./components/Navbar/Navbar";
+import "./globals.css";
+import { Providers } from "./providers";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  const [mode, toggleTheme] = useThemeToggle();
-  const theme = getTheme(mode);
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
+        <meta name="description" content="Los Angeles Video Editor" />
         <meta
-          name='description'
-          content='Los Angeles Video Editor'
-        />
-        <meta
-          name='keywords'
-          content='Editor, Videographer, Video Editor, Film Editor'
+          name="keywords"
+          content="Editor, Videographer, Video Editor, Film Editor"
         ></meta>
         <title>David Goehring</title>
       </head>
       <body className={inter.className}>
-        <ThemeContext.Provider value={{ toggleTheme }}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Navbar />
-            {children}
-          </ThemeProvider>
-        </ThemeContext.Provider>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
