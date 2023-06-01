@@ -7,6 +7,7 @@ type Video = {
   player_embed_url: string;
   width: number;
   height: number;
+  uri: string;
 };
 
 type VideoResponse = {
