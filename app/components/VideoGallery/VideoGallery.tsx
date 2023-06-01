@@ -1,45 +1,61 @@
 'use client';
 
-import { Container, Divider, Stack, Typography } from '@mui/material';
-import ReactPlayer from 'react-player/lazy';
+import { Card, CardMedia, Container, Grid } from '@mui/material';
 
 type Props = {
-  videos: Video[];
+  videos: VideoWithThumbnail[];
 };
 
 const VideoGallery = ({ videos }: Props) => {
   return (
-    <Container maxWidth='xl'>
-      <Stack
+    <Container maxWidth='lg'>
+      <Grid
+        container
         spacing={4}
         sx={{
           marginTop: '2rem',
           marginBottom: '2rem',
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        {videos.map((video: Video) => (
-          <div key={video.name}>
-            <ReactPlayer
-              url={video.player_embed_url}
-              controls={true}
-              pip={true}
-              stopOnUnmount={false}
-              width='100%'
-            />
-            <Typography
-              variant='h5'
-              component={'h3'}
-              textAlign={'center'}
+        {videos.map(video => (
+          <Grid
+            item
+            key={video.name}
+            xs={12}
+            sm={8}
+            md={6}
+            lg={4}
+            sx={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Card
+              elevation={6}
+              raised={false}
+              sx={{
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+              }}
             >
-              {video.name.replace(/^\d+/, '')}
-            </Typography>
-            <Divider />
-          </div>
+              <CardMedia
+                component='img'
+                src={video.thumbnail.src}
+                alt={video.name}
+                sx={{ padding: 0 }}
+                height={video.thumbnail.height}
+                width={video.thumbnail.width}
+              />
+            </Card>
+          </Grid>
         ))}
-      </Stack>
+      </Grid>
     </Container>
   );
 };
