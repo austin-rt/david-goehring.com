@@ -1,7 +1,11 @@
 import VideoGallery from './components/VideoGallery/VideoGallery';
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_ENV}/api/vimeo`);
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_VERCEL_ENV || 'http://localhost:3000'
+    }/api/vimeo`,
+  );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
