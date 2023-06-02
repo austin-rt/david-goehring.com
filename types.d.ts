@@ -23,6 +23,7 @@ type Video = {
   width: number;
   height: number;
   pictures: VideoPictures;
+  uri?: string;
 };
 
 type VideoResponse = {

@@ -1,12 +1,22 @@
 'use client';
 
 import { Card, CardMedia, Container, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 type Props = {
   videos: VideoWithThumbnail[];
 };
 
 const VideoGallery = ({ videos }: Props) => {
+  // this is to help with those crummy hydration errors.... since we're at the mercy of the api returning slowly from vimeo
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <Container maxWidth='lg'>
       <Grid
