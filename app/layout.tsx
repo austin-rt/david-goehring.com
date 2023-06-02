@@ -1,9 +1,16 @@
-import { Inter } from "next/font/google";
-import Navbar from "./components/Navbar/Navbar";
-import "./globals.css";
-import { Providers } from "./providers";
+import { Inter } from 'next/font/google';
+import Navbar from './components/Navbar/Navbar';
+import './globals.css';
+import { Providers } from './providers';
+import { Metadata } from 'next';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'David Goehring',
+  description: 'Los Angeles Video Editor',
+  keywords: 'Editor, Videographer, Video Editor, Film Editor',
+};
 
 export default function RootLayout({
   children,
@@ -11,15 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="description" content="Los Angeles Video Editor" />
-        <meta
-          name="keywords"
-          content="Editor, Videographer, Video Editor, Film Editor"
-        ></meta>
-        <title>David Goehring</title>
-      </head>
+    <html lang='en'>
       <body className={inter.className}>
         <Providers>
           <Navbar />

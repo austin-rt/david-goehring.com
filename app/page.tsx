@@ -15,7 +15,7 @@ async function getData() {
 
 const Page = async () => {
   const videoData = await getData();
-  const { data } = await Promise.resolve(videoData);
+  const { data }: VideoResponse = await Promise.resolve(videoData);
 
   const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: any) => ({
     ...video,
@@ -26,6 +26,8 @@ const Page = async () => {
       width: video.pictures.sizes[3].width,
     },
   }));
+
+  console.log(data[0].uri);
 
   return <VideoGallery videos={videosWithThumbnails} />;
 };
