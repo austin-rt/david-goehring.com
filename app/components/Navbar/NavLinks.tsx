@@ -13,7 +13,7 @@ const NavLinks = ({ pages }: Props) => {
         flexGrow: 1,
         justifyContent: 'flex-end',
         display: { xs: 'none', md: 'flex' },
-        mr: '1rem'
+        mr: '1rem',
       }}
     >
       {/* duplicate code. replace with {pages} */}
@@ -24,7 +24,7 @@ const NavLinks = ({ pages }: Props) => {
             component={Link}
             href={NAVIGATION[page]}
             sx={{
-              fontSize: { xs: '1.25rem', md: '1.1rem' }
+              fontSize: { xs: '1.25rem', md: '1.1rem' },
             }}
           >
             {page}

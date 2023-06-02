@@ -11,7 +11,7 @@ const NavTitle = () => {
         fontSize: { xs: '1.5rem', md: '1.75rem' },
         width: 'max-content',
         fontWeight: 700,
-        letterSpacing: '.2rem'
+        letterSpacing: '.2rem',
       }}
     >
       <Link href='/'>DAVID GOEHRING</Link>

@@ -4,7 +4,7 @@ const Vimeo = require('vimeo').Vimeo;
 const client = new Vimeo(
   `${process.env.VIMEO_CLIENT_ID}`,
   `${process.env.VIMEO_CLIENT_SECRET}`,
-  `${process.env.VIMEO_ACCESS_TOKEN}`
+  `${process.env.VIMEO_ACCESS_TOKEN}`,
 );
 
 const useFetchVideos = () => {
@@ -17,14 +17,14 @@ const useFetchVideos = () => {
         direction: 'asc',
         sort: 'alphabetical',
         filter_tag: 'portfolio',
-        per_page: 100
+        per_page: 100,
       };
 
       try {
         const res = await client.request({
           method: 'GET',
           path: '/me/videos',
-          query: params
+          query: params,
         });
         setVideos(res.data);
       } catch (err: any) {

@@ -9,6 +9,6 @@ export const useDrawer = () => {
 
   return {
     isDrawerOpen,
-    toggleDrawer
+    toggleDrawer,
   };
 };

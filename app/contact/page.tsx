@@ -7,7 +7,7 @@ import {
   Paper,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import FormSnackbar from '../components/FormSnackbar/FormSnackbar';
 
@@ -21,7 +21,7 @@ const Contact = () => {
   const initialFormValues = {
     name: '',
     email: '',
-    message: ''
+    message: '',
   };
 
   const [values, setValues] = useState(initialFormValues);
@@ -44,7 +44,7 @@ const Contact = () => {
         temp.email = 'Email is required.';
       } else if (
         !/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,})$/.test(
-          values.email
+          values.email,
         )
       ) {
         temp.email = 'Email is not valid.';
@@ -58,7 +58,7 @@ const Contact = () => {
     }
 
     setErrors({
-      ...temp
+      ...temp,
     });
 
     if (values === values) {
@@ -76,7 +76,7 @@ const Contact = () => {
   };
 
   const handleChange = (
-    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
@@ -84,7 +84,7 @@ const Contact = () => {
 
   const handleCloseSnackbar = (
     _evt: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -99,7 +99,7 @@ const Contact = () => {
         display: 'flex',
         justifyContent: 'center',
         minHeight: '90vh',
-        my: '10%'
+        my: '10%',
       }}
     >
       <form
@@ -117,7 +117,7 @@ const Contact = () => {
               align='center'
               fontWeight={700}
               sx={{
-                letterSpacing: '.2rem'
+                letterSpacing: '.2rem',
               }}
             >
               REACH OUT

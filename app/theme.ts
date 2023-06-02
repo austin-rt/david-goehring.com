@@ -4,9 +4,9 @@ export const getTheme = (mode: 'light' | 'dark') =>
   createTheme({
     palette: {
       primary: {
-        main: colors.grey[50]
+        main: colors.grey[50],
       },
-      mode
+      mode,
     },
     components: {
       MuiButton: {
@@ -15,12 +15,12 @@ export const getTheme = (mode: 'light' | 'dark') =>
             ...(ownerState.variant === 'text' &&
               ownerState.color === 'primary' &&
               mode === 'light' && {
-                color: colors.grey[900]
-              })
-          })
-        }
-      }
-    }
+                color: colors.grey[900],
+              }),
+          }),
+        },
+      },
+    },
   });
 
 // button colors reverse

@@ -18,7 +18,7 @@ const SnackbarAlert = forwardRef<HTMLDivElement, AlertProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 const FormSnackbar = ({
@@ -26,7 +26,7 @@ const FormSnackbar = ({
   autoHideDuration,
   handleClose,
   severity,
-  text
+  text,
 }: Props) => {
   return (
     <Snackbar
@@ -35,7 +35,7 @@ const FormSnackbar = ({
       onClose={handleClose}
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'center'
+        horizontal: 'center',
       }}
       sx={{ bottom: '-75%' }}
     >

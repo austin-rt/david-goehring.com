@@ -12,8 +12,7 @@ async function getData() {
 
   return res.json();
 }
-
-const Page = async () => {
+export default async function Page() {
   const videoData = await getData();
   const { data }: VideoResponse = await Promise.resolve(videoData);
 
@@ -28,8 +27,5 @@ const Page = async () => {
   }));
 
   console.log(data[0].uri);
-
   return <VideoGallery videos={videosWithThumbnails} />;
-};
-
-export default Page;
+}

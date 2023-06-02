@@ -8,11 +8,11 @@ import {
   Grid,
   Paper,
   Stack,
-  Typography
+  Typography,
 } from '@mui/material';
 import {
   MailOutline as MailOutlineIcon,
-  Call as CallIcon
+  Call as CallIcon,
 } from '@mui/icons-material/';
 import Link from 'next/link';
 
@@ -23,7 +23,7 @@ const About = () => {
         elevation={3}
         sx={{
           p: '1rem',
-          my: { xs: '2rem', md: '5rem' }
+          my: { xs: '2rem', md: '5rem' },
         }}
       >
         <Grid
