@@ -1,6 +1,7 @@
 import { BASE_URL } from '../lib/constants';
 import VideoGallery from './components/VideoGallery/VideoGallery';
 
+console.log(BASE_URL);
 async function getData() {
   console.log(BASE_URL);
   const res = await fetch(`${BASE_URL}/api/vimeo`);
@@ -12,6 +13,7 @@ async function getData() {
 }
 
 export default async function Page() {
+  console.log(BASE_URL);
   const videoData = await getData();
   const { data }: VideoResponse = await Promise.resolve(videoData);
 
