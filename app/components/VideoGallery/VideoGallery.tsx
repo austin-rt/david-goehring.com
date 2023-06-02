@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function VideoGallery({ videos }: Props) {
-  // this is to help with those crummy hydration errors.... since we're at the mercy of the api returning slowly from vimeo
+  // hydration errors since we're at the mercy of vimeo's slow api
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
     setHasMounted(true);
@@ -32,7 +32,7 @@ export default function VideoGallery({ videos }: Props) {
         {videos.map(video => (
           <Grid
             item
-            key={video.name}
+            key={video.uri}
             xs={12}
             sm={8}
             md={6}
