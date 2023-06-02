@@ -2,7 +2,7 @@ import { BASE_URL } from '../lib/constants';
 import VideoGallery from './components/VideoGallery/VideoGallery';
 
 async function getData() {
-  const res = await fetch(`${BASE_URL}/api/vimeo`);
+  const res = await fetch(`https://${BASE_URL}/api/vimeo`);
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
