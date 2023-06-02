@@ -7,26 +7,24 @@ const client = new Vimeo(
   `${process.env.VIMEO_ACCESS_TOKEN}`,
 );
 
-const params = {
-  fields: 'name,player_embed_url,width,height,uri,pictures',
-  direction: 'desc',
-  sort: 'alphabetical',
-  filter_tag: 'portfolio',
-  per_page: 100,
-};
-
 export async function GET(request: Request) {
   try {
-    const videos = await new Promise((resolve, reject) => {
+    const videos = await new Promise<VideoResponse>((resolve, reject) => {
       client.request(
         {
           method: 'GET',
           path: '/me/videos',
-          query: params,
+          query: {
+            fields: 'name,player_embed_url,width,height,uri,pictures',
+            direction: 'desc',
+            sort: 'alphabetical',
+            filter_tag: 'portfolio',
+            per_page: 100,
+          },
         },
-        function (error, body, status_code, headers) {
-          if (error) {
-            reject(error);
+        function (err, body) {
+          if (err) {
+            reject(err);
           } else {
             resolve(body);
           }
