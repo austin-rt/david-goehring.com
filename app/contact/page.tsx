@@ -1,14 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from 'react';
-import {
-  Button,
-  Container,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Container, Paper, Stack, TextField, Typography } from '@mui/material';
 import FormSnackbar from '../components/FormSnackbar/FormSnackbar';
 
 /* 
@@ -17,7 +10,7 @@ wrap in grid
 minimize and fragment component
 */
 
-const Contact = () => {
+export default function Contact() {
   const initialFormValues = {
     name: '',
     email: '',
@@ -28,11 +21,7 @@ const Contact = () => {
   const [errors, setErrors] = useState(initialFormValues);
   const [sent, setSent] = useState(false);
 
-  const validate = (values: {
-    name: string;
-    email: string;
-    message: string;
-  }) => {
+  const validate = (values: { name: string; email: string; message: string }) => {
     let temp = { ...errors };
 
     if ('name' in values) {
@@ -42,11 +31,7 @@ const Contact = () => {
     if ('email' in values) {
       if (values.email === '') {
         temp.email = 'Email is required.';
-      } else if (
-        !/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,})$/.test(
-          values.email,
-        )
-      ) {
+      } else if (!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,})$/.test(values.email)) {
         temp.email = 'Email is not valid.';
       } else {
         temp.email = '';
@@ -75,17 +60,12 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (
-    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
   };
 
-  const handleCloseSnackbar = (
-    _evt: React.SyntheticEvent | Event,
-    reason?: string,
-  ) => {
+  const handleCloseSnackbar = (_evt: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -174,5 +154,4 @@ const Contact = () => {
       />
     </Container>
   );
-};
-export default Contact;
+}

@@ -8,7 +8,7 @@ import {
 import { useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../../contexts/themeContext';
 
-const ThemeToggle = () => {
+export default function ThemeToggle() {
   const theme = useTheme();
   const colorMode = useContext(ThemeContext);
 
@@ -17,13 +17,7 @@ const ThemeToggle = () => {
       onClick={colorMode.toggleTheme}
       color='inherit'
     >
-      {theme.palette.mode === 'dark' ? (
-        <Brightness7Icon />
-      ) : (
-        <Brightness4Icon />
-      )}
+      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
   );
-};
-
-export default ThemeToggle;
+}

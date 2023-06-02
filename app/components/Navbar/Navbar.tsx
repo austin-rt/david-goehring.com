@@ -1,4 +1,5 @@
 'use client';
+
 import { AppBar, Container, Toolbar } from '@mui/material/';
 import { NAVIGATION } from '../../../lib/constants';
 import HamburgerMenu from './HamburgerMenu';
@@ -6,7 +7,7 @@ import NavLinks from './NavLinks';
 import NavTitle from './NavTitle';
 import ThemeToggle from './ThemeToggle';
 
-function Navbar() {
+export default function Navbar() {
   // make pages JSX.Element[] and map through here, adding toggleDrawer
   const pages: string[] = Object.keys(NAVIGATION);
 
@@ -28,5 +29,3 @@ function Navbar() {
     </AppBar>
   );
 }
-
-export default Navbar;

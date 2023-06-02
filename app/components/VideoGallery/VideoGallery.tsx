@@ -1,13 +1,13 @@
 'use client';
 
-import { Card, CardMedia, Container, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Card, CardMedia, Container, Grid } from '@mui/material';
 
 type Props = {
   videos: VideoWithThumbnail[];
 };
 
-const VideoGallery = ({ videos }: Props) => {
+export default function VideoGallery({ videos }: Props) {
   // this is to help with those crummy hydration errors.... since we're at the mercy of the api returning slowly from vimeo
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
@@ -68,5 +68,4 @@ const VideoGallery = ({ videos }: Props) => {
       </Grid>
     </Container>
   );
-};
-export default VideoGallery;
+}

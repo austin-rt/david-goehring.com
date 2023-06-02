@@ -2,9 +2,7 @@ import VideoGallery from './components/VideoGallery/VideoGallery';
 
 async function getData() {
   const res = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_VERCEL_ENV || 'http://localhost:3000'
-    }/api/vimeo`,
+    `${process.env.NEXT_PUBLIC_VERCEL_ENV || 'http://localhost:3000'}/api/vimeo`,
   );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -12,6 +10,7 @@ async function getData() {
 
   return res.json();
 }
+
 export default async function Page() {
   const videoData = await getData();
   const { data }: VideoResponse = await Promise.resolve(videoData);

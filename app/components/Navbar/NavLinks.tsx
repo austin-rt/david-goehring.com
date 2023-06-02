@@ -1,12 +1,12 @@
+import Link from 'next/link';
 import { NAVIGATION } from '@/lib/constants';
 import { Box, Button } from '@mui/material/';
-import Link from 'next/link';
 
 type Props = {
   pages: string[];
 };
 
-const NavLinks = ({ pages }: Props) => {
+export default function NavLinks({ pages }: Props) {
   return (
     <Box
       sx={{
@@ -33,6 +33,4 @@ const NavLinks = ({ pages }: Props) => {
         .filter(page => page.key !== 'HOME')}
     </Box>
   );
-};
-
-export default NavLinks;
+}

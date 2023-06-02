@@ -9,25 +9,23 @@ type Props = {
   text: string;
 };
 
-const SnackbarAlert = forwardRef<HTMLDivElement, AlertProps>(
-  function SnackbarAlert(props, ref) {
-    return (
-      <Alert
-        elevation={6}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const SnackbarAlert = forwardRef<HTMLDivElement, AlertProps>(function SnackbarAlert(props, ref) {
+  return (
+    <Alert
+      elevation={6}
+      ref={ref}
+      {...props}
+    />
+  );
+});
 
-const FormSnackbar = ({
+export default function FormSnackbar({
   open,
   autoHideDuration,
   handleClose,
   severity,
   text,
-}: Props) => {
+}: Props) {
   return (
     <Snackbar
       open={open}
@@ -47,5 +45,4 @@ const FormSnackbar = ({
       </SnackbarAlert>
     </Snackbar>
   );
-};
-export default FormSnackbar;
+}

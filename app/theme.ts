@@ -25,3 +25,4 @@ export const getTheme = (mode: 'light' | 'dark') =>
 
 // button colors reverse
 // text field floating label color reverse
+// grid items aspect ration 1:1 grid/card/paper ?

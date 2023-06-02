@@ -7,7 +7,7 @@ const client = new Vimeo(
   `${process.env.VIMEO_ACCESS_TOKEN}`,
 );
 
-const useFetchVideos = () => {
+export default function useFetchVideos() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -35,6 +35,4 @@ const useFetchVideos = () => {
     fetchVideos();
   }, []);
   return { videos };
-};
-
-export default useFetchVideos;
+}

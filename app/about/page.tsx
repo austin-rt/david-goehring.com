@@ -1,22 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
-import {
-  MailOutline as MailOutlineIcon,
-  Call as CallIcon,
-} from '@mui/icons-material/';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Box, Button, Container, Grid, Paper, Stack, Typography } from '@mui/material';
+import { MailOutline as MailOutlineIcon, Call as CallIcon } from '@mui/icons-material/';
 
-const About = () => {
+export default function About() {
   return (
     <Container maxWidth='md'>
       <Paper
@@ -67,8 +56,7 @@ const About = () => {
               variant='h6'
               component='p'
             >
-              To see some of my favorite projects from behind the camera, check
-              out{' '}
+              To see some of my favorite projects from behind the camera, check out{' '}
               <Link
                 href='https://vimeo.com/davidgoehring'
                 target='_blank'
@@ -112,5 +100,4 @@ const About = () => {
       </Paper>
     </Container>
   );
-};
-export default About;
+}

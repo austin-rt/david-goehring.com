@@ -1,7 +1,7 @@
-import { Typography } from '@mui/material';
 import Link from 'next/link';
+import { Typography } from '@mui/material';
 
-const NavTitle = () => {
+export default function NavTitle() {
   return (
     <Typography
       variant='h5'
@@ -17,5 +17,4 @@ const NavTitle = () => {
       <Link href='/'>DAVID GOEHRING</Link>
     </Typography>
   );
-};
-export default NavTitle;
+}

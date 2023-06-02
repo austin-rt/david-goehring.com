@@ -1,15 +1,16 @@
 'use client';
-import { Box, IconButton, Drawer, Button } from '@mui/material/';
-import MenuIcon from '@mui/icons-material/Menu';
-import { useDrawer } from '../../hooks/useDrawer';
+
 import Link from 'next/link';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box, IconButton, Drawer, Button } from '@mui/material/';
 import { NAVIGATION } from '@/lib/constants';
+import { useDrawer } from '../../hooks/useDrawer';
 
 type Props = {
   pages: string[];
 };
 
-function HamburgerMenu({ pages }: Props) {
+export default function HamburgerMenu({ pages }: Props) {
   const { isDrawerOpen, toggleDrawer } = useDrawer();
 
   return (
@@ -59,5 +60,3 @@ function HamburgerMenu({ pages }: Props) {
     </Box>
   );
 }
-
-export default HamburgerMenu;
