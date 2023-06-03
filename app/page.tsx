@@ -10,18 +10,18 @@ async function getData() {
 }
 
 export default async function Page() {
-  const videoData = await getData();
-  const { data }: VideoResponse = await Promise.resolve(videoData);
+  // const videoData = await getData();
+  // const { data }: VideoResponse = await Promise.resolve(videoData);
 
-  const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: any) => ({
-    ...video,
-    name: video.name.replace(/^\d+\s/, ''),
-    thumbnail: {
-      src: video.pictures.sizes[video.pictures.sizes.length - 1].link,
-      height: video.pictures.sizes[3].height,
-      width: video.pictures.sizes[3].width,
-    },
-  }));
+  // const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: any) => ({
+  //   ...video,
+  //   name: video.name.replace(/^\d+\s/, ''),
+  //   thumbnail: {
+  //     src: video.pictures.sizes[video.pictures.sizes.length - 1].link,
+  //     height: video.pictures.sizes[3].height,
+  //     width: video.pictures.sizes[3].width,
+  //   },
+  // }));
 
-  return <VideoGallery videos={videosWithThumbnails} />;
+  return <>{/* <VideoGallery videos={videosWithThumbnails} />; */}</>;
 }
