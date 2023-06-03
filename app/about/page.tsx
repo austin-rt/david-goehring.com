@@ -9,7 +9,7 @@ export default function About() {
   return (
     <Container maxWidth='md'>
       <Paper
-        elevation={3}
+        elevation={6}
         sx={{
           p: '1rem',
           my: { xs: '2rem', md: '5rem' },
@@ -80,14 +80,14 @@ export default function About() {
                 spacing={1}
               >
                 <Button
-                  variant='contained'
+                  variant='outlined'
                   component={Link}
                   href='mailto:dagoehring@gmail.com'
                 >
                   <MailOutlineIcon />
                 </Button>
                 <Button
-                  variant='contained'
+                  variant='outlined'
                   component={Link}
                   href='tel:6786342067'
                 >
