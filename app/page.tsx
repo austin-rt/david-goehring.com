@@ -1,7 +1,13 @@
 import VideoGallery from './components/VideoGallery/VideoGallery';
 
 async function getData() {
-  const res = await fetch(`david-goehring-com.vercel.app/api/vimeo`);
+  const res = await fetch(
+    `${
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    }/api/vimeo`,
+  );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
