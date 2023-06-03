@@ -86,7 +86,10 @@ export default function Contact() {
         onSubmit={handleSubmit}
         style={{ maxWidth: '500px', minWidth: '250px', width: '80%' }}
       >
-        <Paper sx={{ p: 4 }}>
+        <Paper
+          elevation={6}
+          sx={{ p: 4 }}
+        >
           <Stack
             direction='column'
             spacing={2}
@@ -135,8 +138,7 @@ export default function Contact() {
               error={!!errors.message}
             />
             <Button
-              variant='contained'
-              color='primary'
+              variant='outlined'
               type='submit'
               sx={{ width: '100px' }}
             >
