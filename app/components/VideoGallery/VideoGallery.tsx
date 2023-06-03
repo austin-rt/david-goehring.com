@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, CardMedia, Container, Grid } from '@mui/material';
+import { Card, Container, Grid } from '@mui/material';
+import Image from 'next/image';
 
 type Props = {
   videos: VideoWithThumbnail[];
@@ -54,11 +55,9 @@ export default function VideoGallery({ videos }: Props) {
                 cursor: 'pointer',
               }}
             >
-              <CardMedia
-                component='img'
+              <Image
                 src={video.thumbnail.src}
                 alt={video.name}
-                sx={{ padding: 0 }}
                 height={video.thumbnail.height}
                 width={video.thumbnail.width}
               />
