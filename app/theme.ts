@@ -1,5 +1,7 @@
 import { colors, createTheme } from '@mui/material';
 
+// font colors are too harsh
+
 export const getTheme = (mode: 'light' | 'dark') =>
   createTheme({
     palette: {
@@ -71,6 +73,3 @@ export const getTheme = (mode: 'light' | 'dark') =>
       },
     },
   });
-
-// text field floating label color reverse
-// grid items aspect ration 1:1 grid/card/paper ?

@@ -7,7 +7,8 @@ import FormSnackbar from '../components/FormSnackbar/FormSnackbar';
 /* 
 add blurb
 wrap in grid
-minimize and fragment component
+extract form functionality to hook
+choose lib for email
 */
 
 export default function Contact() {

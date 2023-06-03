@@ -8,6 +8,8 @@ type Props = {
   videos: VideoWithThumbnail[];
 };
 
+// grid items aspect ratio to 1:1 - grid/card/paper ?
+
 export default function VideoGallery({ videos }: Props) {
   // hydration errors since we're at the mercy of vimeo's slow api
   const [hasMounted, setHasMounted] = useState(false);
