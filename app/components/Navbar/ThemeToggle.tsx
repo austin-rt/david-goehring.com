@@ -16,6 +16,7 @@ export default function ThemeToggle() {
     <IconButton
       onClick={colorMode.toggleTheme}
       color='inherit'
+      aria-label='toggle theme'
     >
       {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
