@@ -11,14 +11,12 @@ export default function About() {
       <Paper
         elevation={6}
         sx={{
-          p: '1rem',
+          p: 0,
           my: { xs: '2rem', md: '5rem' },
         }}
       >
         <Grid
           container
-          rowSpacing={{ xs: 0, md: 4 }}
-          columnSpacing={{ xs: 4, md: 0 }}
           direction={{ xs: 'column', md: 'row' }}
           sx={{ py: '1rem' }}
         >
@@ -28,6 +26,7 @@ export default function About() {
             md={6}
             display='flex'
             justifyContent='center'
+            alignItems='center'
           >
             <Image
               src='/images/david-operating-camera.jpeg'
@@ -46,15 +45,15 @@ export default function About() {
             alignItems='center'
           >
             <Typography
-              variant='h6'
-              component='p'
+              variant='body1'
+              p={'1rem'}
             >
               {`Hey there, my name is David Goehring and I'm a Los Angeles based
               Video Editor. I've been editing professionally for over 10 years and have worked on a wide variety of projects.`}
             </Typography>
             <Typography
-              variant='h6'
-              component='p'
+              variant='body1'
+              p={'1rem'}
             >
               To see some of my favorite projects from behind the camera, check out{' '}
               <Link
@@ -71,7 +70,7 @@ export default function About() {
                 variant='h6'
                 component='p'
                 textAlign='center'
-                sx={{ mb: '1rem' }}
+                mb={'1rem'}
               >
                 Contact:
               </Typography>
