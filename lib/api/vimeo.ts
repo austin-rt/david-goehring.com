@@ -16,7 +16,8 @@ export function fetchVideos(): Promise<VideoResponse> {
         method: 'GET',
         path: '/me/videos',
         query: {
-          fields: 'name,player_embed_url,width,height,uri,pictures', // these fields define the shape of the Video type in ~/types.d.ts
+          fields: 'name,player_embed_url,width,height,uri,pictures',
+          // these fields define the shape of the Video type
           direction: 'desc',
           sort: 'alphabetical',
           filter_tag: 'portfolio',

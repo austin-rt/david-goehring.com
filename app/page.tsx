@@ -15,7 +15,7 @@ export default async function Page() {
   const videoData = fetchVideos();
   const { data }: VideoResponse = await Promise.resolve(videoData);
 
-  const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: any) => ({
+  const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: Video) => ({
     ...video,
     name: video.name.replace(/^\d+\s/, ''),
     thumbnail: {
