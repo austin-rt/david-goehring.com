@@ -2,11 +2,28 @@ type Navigation = {
   [key: string]: string;
 };
 
-type VideoPicturesSize = {
+type VideoResponse = {
+  total: number;
+  page: number;
+  per_page: number;
+  paging: VideoResponsePaging;
+  data: Video[];
+};
+
+type VideoResponsePaging = {
+  next?: string;
+  previous?: string;
+  first: string;
+  last: string;
+};
+
+type Video = {
+  name: string;
+  player_embed_url: string;
   width: number;
   height: number;
-  link: string;
-  link_with_play_button: string;
+  uri: string;
+  pictures: VideoPictures;
 };
 
 type VideoPictures = {
@@ -19,36 +36,19 @@ type VideoPictures = {
   default_picture: boolean;
 };
 
-type Video = {
-  name: string;
-  player_embed_url: string;
+type VideoPicturesSize = {
   width: number;
   height: number;
-  uri: string;
-  pictures: VideoPictures;
+  link: string;
+  link_with_play_button: string;
 };
 
-type VideoResponsePaging = {
-  next?: string;
-  previous?: string;
-  first: string;
-  last: string;
-};
-
-type VideoResponse = {
-  total: number;
-  page: number;
-  per_page: number;
-  paging: VideoResponsePaging;
-  data: Video[];
-};
+type VideoWithThumbnail = {
+  thumbnail: Thumbnail;
+} & Video;
 
 type Thumbnail = {
   src: string;
   height: number;
   width: number;
 };
-
-type VideoWithThumbnail = {
-  thumbnail: Thumbnail;
-} & Video;
