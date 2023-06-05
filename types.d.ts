@@ -1,8 +1,8 @@
-interface Navigation {
+type Navigation = {
   [key: string]: string;
-}
+};
 
-type VideoPicturesSizes = {
+type VideoPicturesSize = {
   width: number;
   height: number;
   link: string;
@@ -13,8 +13,10 @@ type VideoPictures = {
   uri: string;
   active: boolean;
   type: string;
-  link: string;
-  sizes: VideoPicturesSizes[];
+  base_link: string;
+  sizes: VideoPicturesSize[];
+  resource_key: string;
+  default_picture: boolean;
 };
 
 type Video = {
@@ -22,20 +24,22 @@ type Video = {
   player_embed_url: string;
   width: number;
   height: number;
+  uri: string;
   pictures: VideoPictures;
-  uri?: string;
+};
+
+type VideoResponsePaging = {
+  next?: string;
+  previous?: string;
+  first: string;
+  last: string;
 };
 
 type VideoResponse = {
   total: number;
   page: number;
   per_page: number;
-  paging: {
-    next?: string;
-    previous?: string;
-    first: string;
-    last: string;
-  };
+  paging: VideoResponsePaging;
   data: Video[];
 };
 
@@ -46,5 +50,13 @@ type Thumbnail = {
 };
 
 type VideoWithThumbnail = {
-  thumbnail: VideoThumbnail;
+  thumbnail: Thumbnail;
 } & Video;
+
+enum VimeoQueryParams {
+  fields = 'name,player_embed_url,width,height,uri,pictures',
+  direction = 'desc',
+  sort = 'alphabetical',
+  filter_tag = 'portfolio',
+  per_page = 100,
+}
