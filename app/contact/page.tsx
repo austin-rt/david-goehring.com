@@ -12,12 +12,14 @@ choose lib for email
 */
 
 export default function Contact() {
+  // type this
   const initialFormValues = {
     name: '',
     email: '',
     message: '',
   };
 
+  //type these
   const [values, setValues] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialFormValues);
   const [sent, setSent] = useState(false);
@@ -52,9 +54,11 @@ export default function Contact() {
     }
   };
 
+  // type this evt
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
     if (validate(values)) {
+      // send email
       console.log(values);
       setValues(initialFormValues);
       setSent(true);
