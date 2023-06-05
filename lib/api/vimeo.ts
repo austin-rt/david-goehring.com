@@ -16,11 +16,11 @@ export function fetchVideos(): Promise<VideoResponse> {
         method: 'GET',
         path: '/me/videos',
         query: {
-          fields: VimeoQueryParams.fields,
-          direction: VimeoQueryParams.direction,
-          sort: VimeoQueryParams.sort,
-          filter_tag: VimeoQueryParams.filter_tag,
-          per_page: VimeoQueryParams.per_page,
+          fields: 'name,player_embed_url,width,height,uri,pictures', // these fields define the shape of the Video type in ~/types.d.ts
+          direction: 'desc',
+          sort: 'alphabetical',
+          filter_tag: 'portfolio',
+          per_page: 100,
         },
       },
       function (err, result) {

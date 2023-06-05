@@ -52,11 +52,3 @@ type Thumbnail = {
 type VideoWithThumbnail = {
   thumbnail: Thumbnail;
 } & Video;
-
-enum VimeoQueryParams {
-  fields = 'name,player_embed_url,width,height,uri,pictures',
-  direction = 'desc',
-  sort = 'alphabetical',
-  filter_tag = 'portfolio',
-  per_page = 100,
-}
