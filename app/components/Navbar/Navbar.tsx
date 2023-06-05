@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Container, Toolbar } from '@mui/material/';
+import { AppBar, Container, Toolbar, useMediaQuery, useTheme } from '@mui/material/';
 import { NAVIGATION } from '../../../lib/constants';
 import HamburgerMenu from './HamburgerMenu';
 import NavLinks from './NavLinks';
@@ -8,8 +8,9 @@ import NavTitle from './NavTitle';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
-  // make pages JSX.Element[] and map through here, adding toggleDrawer
+  // make pages: JSX.Element[] and map through here, adding toggleDrawer
   const pages: string[] = Object.keys(NAVIGATION);
+  const theme = useTheme();
 
   return (
     <AppBar position='static'>
@@ -20,9 +21,9 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          <HamburgerMenu pages={pages} />
+          {useMediaQuery(theme.breakpoints.down('md')) && <HamburgerMenu pages={pages} />}
           <NavTitle />
-          <NavLinks pages={pages} />
+          {useMediaQuery(theme.breakpoints.up('md')) && <NavLinks pages={pages} />}
           <ThemeToggle />
         </Toolbar>
       </Container>

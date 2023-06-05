@@ -14,7 +14,7 @@ export default function HamburgerMenu({ pages }: Props) {
   const { isDrawerOpen, toggleDrawer } = useDrawer();
 
   return (
-    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+    <Box sx={{ display: 'flex' }}>
       <IconButton
         size='large'
         aria-label='hamburger menu'
@@ -48,7 +48,7 @@ export default function HamburgerMenu({ pages }: Props) {
               component={Link}
               href={NAVIGATION[page]}
               sx={{
-                fontSize: { xs: '1.25rem', md: '1.1rem' },
+                fontSize: '1.25rem',
               }}
               onClick={toggleDrawer}
             >

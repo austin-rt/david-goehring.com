@@ -12,7 +12,7 @@ export default function NavLinks({ pages }: Props) {
       sx={{
         flexGrow: 1,
         justifyContent: 'flex-end',
-        display: { xs: 'none', md: 'flex' },
+        display: 'flex',
         mr: '1rem',
       }}
     >
@@ -24,7 +24,7 @@ export default function NavLinks({ pages }: Props) {
             component={Link}
             href={NAVIGATION[page]}
             sx={{
-              fontSize: { xs: '1.25rem', md: '1.1rem' },
+              fontSize: '1.1rem',
             }}
           >
             {page}
