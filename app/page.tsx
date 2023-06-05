@@ -1,16 +1,18 @@
 import VideoGallery from './components/VideoGallery/VideoGallery';
 
-async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/vimeo`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
+import { fetchVideos } from '@/lib/api/vimeo';
 
-  return res.json();
-}
+// async function getData() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/vimeo`);
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data');
+//   }
+
+//   return res.json();
+// }
 
 export default async function Page() {
-  const videoData = await getData();
+  const videoData = fetchVideos();
   const { data }: VideoResponse = await Promise.resolve(videoData);
 
   const videosWithThumbnails: VideoWithThumbnail[] = data.map((video: any) => ({
