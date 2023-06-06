@@ -6,9 +6,6 @@ export const vimeoClient = new Vimeo(
   `${process.env.VIMEO_ACCESS_TOKEN}`,
 );
 
-// type VimeoQueryParams as enums
-// make query object keys keys of params types and values values of params types
-
 export function fetchVideos(): Promise<VideoResponse> {
   return new Promise((resolve, reject) => {
     vimeoClient.request(
