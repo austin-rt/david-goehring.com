@@ -1,25 +1,99 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, Container, Grid } from '@mui/material';
+import { Card, Container, Grid, Modal, Stack, Typography, useTheme } from '@mui/material';
 import Image from 'next/image';
+import VimeoPlayer from 'react-player/vimeo';
 
 type Props = {
   videos: VideoWithThumbnail[];
 };
 
 export default function VideoGallery({ videos }: Props) {
+  const theme = useTheme();
+
+  const [isModalOpen, toggleIsModalOpen] = useState<boolean>(false);
+  const [selectedVideo, setSelectedVideo] = useState<Video | undefined>(undefined);
+  // const [isMuted, toggleIsMuted] = useState<boolean>(false);
+  // const [volume, setVolume] = useState<number>(0);
+
   // hydration errors since we're at the mercy of vimeo's slow api
   const [hasMounted, setHasMounted] = useState(false);
+
+  const handleClick = (_evt: React.MouseEvent<HTMLDivElement>, video: Video) => {
+    toggleIsModalOpen(true);
+    setSelectedVideo(video);
+  };
+
+  const handleCloseModal = () => {
+    toggleIsModalOpen(false);
+    setSelectedVideo(undefined);
+  };
+
+  // const handlePlayVideo = () => {
+  //   toggleIsMuted(false);
+  //   setVolume(1);
+  // };
+
   useEffect(() => {
     setHasMounted(true);
   }, []);
+
   if (!hasMounted) {
     return null;
   }
 
   return (
     <Container maxWidth='lg'>
+      {selectedVideo && (
+        <Modal
+          open={isModalOpen}
+          onClose={handleCloseModal}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Stack
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              dispaly: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            color={theme.palette.primary.main}
+            textAlign='center'
+          >
+            <VimeoPlayer
+              url={selectedVideo.player_embed_url}
+              width='95vw'
+              playing
+              muted={false}
+              // muted={isMuted}
+              volume={1}
+              // volume={volume}
+              // onStart={handlePlayVideo}
+              controls
+            />
+            <Typography
+              id='modal-modal-title'
+              variant='h6'
+              component='h2'
+            >
+              {selectedVideo.name}
+            </Typography>
+            <Typography
+              id='modal-modal-description'
+              variant='body2'
+            >
+              {selectedVideo.description}
+            </Typography>
+          </Stack>
+        </Modal>
+      )}
+
       <Grid
         container
         spacing={4}
@@ -42,6 +116,7 @@ export default function VideoGallery({ videos }: Props) {
               justifyContent: 'center',
               alignItems: 'center',
             }}
+            onClick={(evt: React.MouseEvent<HTMLDivElement>) => handleClick(evt, video)}
           >
             <Card
               elevation={6}
@@ -60,6 +135,7 @@ export default function VideoGallery({ videos }: Props) {
                 alt={video.name}
                 height={video.thumbnail.height}
                 width={video.thumbnail.width}
+                data-video={video}
               />
             </Card>
           </Grid>
