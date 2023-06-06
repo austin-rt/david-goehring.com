@@ -1,7 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, Container, Grid, Modal, Stack, Typography, useTheme } from '@mui/material';
+import {
+  Card,
+  Container,
+  Grid,
+  Modal,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import Image from 'next/image';
 import VimeoPlayer from 'react-player/vimeo';
 
@@ -11,6 +20,7 @@ type Props = {
 
 export default function VideoGallery({ videos }: Props) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [isModalOpen, toggleIsModalOpen] = useState<boolean>(false);
   const [selectedVideo, setSelectedVideo] = useState<Video | undefined>(undefined);
@@ -64,6 +74,7 @@ export default function VideoGallery({ videos }: Props) {
               url={selectedVideo.player_embed_url}
               playing
               muted={false}
+              width={isMobile ? '98vw' : undefined}
               volume={1}
               controls
             />
