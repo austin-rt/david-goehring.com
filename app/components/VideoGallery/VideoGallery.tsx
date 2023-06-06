@@ -14,26 +14,19 @@ export default function VideoGallery({ videos }: Props) {
 
   const [isModalOpen, toggleIsModalOpen] = useState<boolean>(false);
   const [selectedVideo, setSelectedVideo] = useState<Video | undefined>(undefined);
-  // const [isMuted, toggleIsMuted] = useState<boolean>(false);
-  // const [volume, setVolume] = useState<number>(0);
 
   // hydration errors since we're at the mercy of vimeo's slow api
   const [hasMounted, setHasMounted] = useState(false);
 
   const handleClick = (_evt: React.MouseEvent<HTMLDivElement>, video: Video) => {
-    toggleIsModalOpen(true);
     setSelectedVideo(video);
+    toggleIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     toggleIsModalOpen(false);
     setSelectedVideo(undefined);
   };
-
-  // const handlePlayVideo = () => {
-  //   toggleIsMuted(false);
-  //   setVolume(1);
-  // };
 
   useEffect(() => {
     setHasMounted(true);
@@ -71,10 +64,7 @@ export default function VideoGallery({ videos }: Props) {
               width='95vw'
               playing
               muted={false}
-              // muted={isMuted}
               volume={1}
-              // volume={volume}
-              // onStart={handlePlayVideo}
               controls
             />
             <Typography
@@ -88,7 +78,7 @@ export default function VideoGallery({ videos }: Props) {
               id='modal-modal-description'
               variant='body2'
             >
-              {selectedVideo.description}
+              {selectedVideo?.description}
             </Typography>
           </Stack>
         </Modal>
