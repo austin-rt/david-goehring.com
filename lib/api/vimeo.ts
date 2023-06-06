@@ -13,7 +13,7 @@ export function fetchVideos(): Promise<VideoResponse> {
         method: 'GET',
         path: '/me/videos',
         query: {
-          fields: 'name,player_embed_url,width,height,uri,pictures',
+          fields: 'name,player_embed_url,width,height,uri,pictures,description',
           // these fields define the shape of the Video type
           direction: 'desc',
           sort: 'alphabetical',

@@ -24,6 +24,7 @@ type Video = {
   height: number;
   uri: string;
   pictures: VideoPictures;
+  description: string;
 };
 
 type VideoPictures = {
