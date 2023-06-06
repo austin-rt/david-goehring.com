@@ -55,13 +55,13 @@ export default function VideoGallery({ videos }: Props) {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+              outline: 'none',
             }}
             color={theme.palette.primary.main}
             textAlign='center'
           >
             <VimeoPlayer
               url={selectedVideo.player_embed_url}
-              width='95vw'
               playing
               muted={false}
               volume={1}
