@@ -7,6 +7,7 @@ export const vimeoClient = new Vimeo(
 );
 
 export function fetchVideos(): Promise<VideoResponse> {
+  // function called in /app/page.tsx
   return new Promise((resolve, reject) => {
     vimeoClient.request(
       {

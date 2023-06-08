@@ -5,6 +5,9 @@ import {
   Card,
   Container,
   Grid,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
   Modal,
   Stack,
   Typography,
@@ -95,53 +98,52 @@ export default function VideoGallery({ videos }: Props) {
         </Modal>
       )}
 
-      <Grid
-        container
-        spacing={4}
+      <ImageList
+        cols={isMobile ? 1 : 3}
+        gap={8}
         sx={{
-          marginTop: '2rem',
-          marginBottom: '2rem',
-          justifyContent: 'center',
-          alignItems: 'center',
+          width: '80vw',
+          margin: '2rem auto',
+          border: '2px solid red',
         }}
       >
         {videos.map(video => (
-          <Grid
-            item
+          <ImageListItem
             key={video.uri}
-            xs={12}
-            sm={8}
-            md={6}
-            lg={4}
             sx={{
-              justifyContent: 'center',
-              alignItems: 'center',
+              cursor: 'pointer',
             }}
-            onClick={(evt: React.MouseEvent<HTMLDivElement>) => handleClick(evt, video)}
           >
-            <Card
-              elevation={6}
-              raised={false}
+            <Image
+              src={video.thumbnail.src}
+              alt={video.name}
+              height={video.thumbnail.height}
+              width={video.thumbnail.width}
+              onClick={(evt: React.MouseEvent<HTMLDivElement>) => handleClick(evt, video)}
+              loading='lazy'
+            />
+            <ImageListItemBar
+              // make title show only on hover
+              title={
+                <Typography
+                  variant='h6'
+                  component='h2'
+                  sx={{
+                    color: theme.palette.primary.main,
+                  }}
+                >
+                  {video.name}
+                </Typography>
+              }
               sx={{
-                padding: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
+                background:
+                  'linear-gradient(to top, rgba(0,0,0,0.7) 0%, ' +
+                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
               }}
-            >
-              <Image
-                src={video.thumbnail.src}
-                alt={video.name}
-                height={video.thumbnail.height}
-                width={video.thumbnail.width}
-                data-video={video}
-              />
-            </Card>
-          </Grid>
+            />
+          </ImageListItem>
         ))}
-      </Grid>
+      </ImageList>
     </Container>
   );
 }
