@@ -54,11 +54,10 @@ export default function Contact() {
     }
   };
 
-  // type this evt
-  const handleSubmit = (evt: any) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (validate(values)) {
-      // send email
+      // send email – emailJS?
       console.log(values);
       setValues(initialFormValues);
       setSent(true);

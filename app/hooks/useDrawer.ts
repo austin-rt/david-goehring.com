@@ -3,7 +3,7 @@ import { useState, MouseEvent } from 'react';
 export const useDrawer = () => {
   const [isDrawerOpen, toggleIsDrawerOpen] = useState<boolean>(false);
 
-  const toggleDrawer = (event: MouseEvent<HTMLElement>) => {
+  const toggleDrawer = (_evt: MouseEvent<HTMLElement>) => {
     toggleIsDrawerOpen(!isDrawerOpen);
   };
 
