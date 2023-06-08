@@ -12,53 +12,57 @@ choose lib for email
 */
 
 export default function Contact() {
-  // type this
-  const initialFormValues = {
+  const initialFormValues: {
+    name: string;
+    email: string;
+    message: string;
+  } = {
     name: '',
     email: '',
     message: '',
   };
 
-  //type these
-  const [values, setValues] = useState(initialFormValues);
-  const [errors, setErrors] = useState(initialFormValues);
-  const [sent, setSent] = useState(false);
+  const [formValues, setValues] = useState<typeof initialFormValues>(initialFormValues);
+  const [error, setError] = useState<typeof initialFormValues>(initialFormValues);
+  const [sent, setSent] = useState<boolean>(false);
+
+  // ====== extract validation logic to custom hook ====== //
 
   const validate = (values: { name: string; email: string; message: string }) => {
-    let temp = { ...errors };
+    let err = { ...error };
 
     if ('name' in values) {
-      temp.name = values.name ? '' : 'Name is required.';
+      err.name = formValues.name ? '' : 'Name is required.';
     }
 
     if ('email' in values) {
-      if (values.email === '') {
-        temp.email = 'Email is required.';
+      if (formValues.email === '') {
+        err.email = 'Email is required.';
       } else if (!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,})$/.test(values.email)) {
-        temp.email = 'Email is not valid.';
+        err.email = 'Email is not valid.';
       } else {
-        temp.email = '';
+        err.email = '';
       }
     }
 
     if ('message' in values) {
-      temp.message = values.message ? '' : 'Message is required.';
+      err.message = formValues.message ? '' : 'Message is required.';
     }
 
-    setErrors({
-      ...temp,
+    setError({
+      ...err,
     });
 
-    if (values === values) {
-      return Object.values(temp).every(x => x === '');
+    if (values === formValues) {
+      return Object.values(err).every(x => x === '');
     }
   };
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (validate(values)) {
+    if (validate(formValues)) {
       // send email – emailJS?
-      console.log(values);
+      console.log(formValues);
       setValues(initialFormValues);
       setSent(true);
     }
@@ -66,7 +70,7 @@ export default function Contact() {
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
-    setValues({ ...values, [name]: value });
+    setValues({ ...formValues, [name]: value });
   };
 
   const handleCloseSnackbar = (_evt: React.SyntheticEvent | Event, reason?: string) => {
@@ -114,20 +118,20 @@ export default function Contact() {
               label='Name'
               variant='outlined'
               fullWidth
-              value={values.name}
+              value={formValues.name}
               onChange={handleChange}
-              helperText={errors.name}
-              error={!!errors.name}
+              helperText={error.name}
+              error={!!error.name}
             />
             <TextField
               name='email'
               label='Email'
               variant='outlined'
               fullWidth
-              value={values.email}
+              value={formValues.email}
               onChange={handleChange}
-              helperText={errors.email}
-              error={!!errors.email}
+              helperText={error.email}
+              error={!!error.email}
             />
             <TextField
               name='message'
@@ -136,10 +140,10 @@ export default function Contact() {
               fullWidth
               multiline
               minRows={4}
-              value={values.message}
+              value={formValues.message}
               onChange={handleChange}
-              helperText={errors.message}
-              error={!!errors.message}
+              helperText={error.message}
+              error={!!error.message}
             />
             <Button
               variant='outlined'
