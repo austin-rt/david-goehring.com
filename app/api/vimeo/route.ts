@@ -7,6 +7,10 @@ const client = new Vimeo(
   `${process.env.VIMEO_ACCESS_TOKEN}`,
 );
 
+// for now calling vimeo API in app/page.tsx component
+// due to call happening in server side component before build completed - ??
+// if it remains unused, delete this file
+
 export async function GET(request: Request) {
   try {
     const videos = await new Promise<VideoResponse>((resolve, reject) => {

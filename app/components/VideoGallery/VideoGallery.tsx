@@ -22,6 +22,7 @@ export default function VideoGallery({ videos }: Props) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  // ====== MODAL LOGIC NEEDS TO BE MOVED TO CUSTOM HOOK ====== //
   const [isModalOpen, toggleIsModalOpen] = useState<boolean>(false);
   const [selectedVideo, setSelectedVideo] = useState<Video | undefined>(undefined);
 
